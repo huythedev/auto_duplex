@@ -1,3 +1,4 @@
+import sys
 import os
 import time
 import subprocess
@@ -6,8 +7,11 @@ from pypdf import PdfReader, PdfWriter
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 
-# --- DYNAMIC PATH CONFIGURATION ---
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+if getattr(sys, 'frozen', False):
+    BASE_DIR = os.path.dirname(sys.executable)
+else:
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 SPOOL_DIR = os.path.join(BASE_DIR, "Spool")
 SUMATRA_PATH = os.path.join(BASE_DIR, "SumatraPDF.exe")
 
