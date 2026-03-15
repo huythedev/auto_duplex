@@ -1,0 +1,40 @@
+name: Build and Release EXE
+
+on:
+  push:
+    tags:
+      - 'v*' # Tự động build khi mày push một tag mới (vd: v1.0, v1.1)
+  workflow_dispatch: # Cho phép mày bấm nút "Run workflow" bằng tay trên web
+
+jobs:
+  build:
+    runs-on: windows-latest # Bắt buộc dùng máy ảo Windows để build file .exe
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11' # Dùng bản 3.11 cho ổn định
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install watchdog pypdf pyinstaller
+
+    - name: Build EXE with PyInstaller
+      # --onefile: Đóng gói thành 1 file duy nhất
+      # --noconsole: Chạy ngầm, không hiện cửa sổ CMD đen
+      # --icon=NONE: Mày có thể đổi thành --icon=icon.ico nếu có file icon
+      run: |
+        pyinstaller --onefile --noconsole --name AutoDuplex main.py
+
+    - name: Create Release and Upload Asset
+      uses: softprops/action-gh-release@v2
+      with:
+        files: dist/AutoDuplex.exe
+        generate_release_notes: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
