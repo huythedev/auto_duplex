@@ -17,9 +17,10 @@ You can install this tool using either the pre-built executable (recommended for
 ### Option A: Pre-built Executable (Easy)
 
 1. Create a root directory (e.g., `C:\AutoDuplex`).
-2. Download the `.exe` file from the [Releases](#) page and place it in your directory.
+2. Download the `.exe` file from the [Releases](https://github.com/huythedev/auto_duplex/releases/latest) page and place it in your directory.
 3. Download `SumatraPDF.exe` (Portable version) and place it in the **same directory** as the `.exe`.
-4. Skip to **Step 3: Configure PDF24** below.
+4. Create a directory called "Spool" in the **same directory** as the `.exe`.
+5. Skip to **Step 3: Configure PDF24** below.
 
 ### Option B: Run from Source (Advanced/Custom)
 
@@ -27,6 +28,7 @@ You can install this tool using either the pre-built executable (recommended for
 1. Create a root directory (e.g., `C:\AutoDuplex`).
 2. Clone this repo (containing `main.py`, `autoduplex.bat`) into that directory.
 3. Download `SumatraPDF.exe` (Portable version) and place it in the same directory.
+4. Create a directory called "Spool" in the same directory.
 
 #### Step 2: Install Python Dependencies
 Open Terminal/CMD and run:
