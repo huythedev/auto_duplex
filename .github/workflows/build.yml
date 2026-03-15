@@ -6,6 +6,9 @@ on:
       - 'v*' # Tự động build khi mày push một tag mới (vd: v1.0, v1.1)
   workflow_dispatch: # Cho phép mày bấm nút "Run workflow" bằng tay trên web
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: windows-latest # Bắt buộc dùng máy ảo Windows để build file .exe
