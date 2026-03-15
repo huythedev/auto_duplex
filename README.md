@@ -47,11 +47,12 @@ PRINTER_NAME = "Canon LBP2900"
 
 * **Method 1 - Run for Debugging:** Open CMD in the tool's directory, type `python main.py`. The CMD window will stay open to show print logs.
 * **Method 2 - Run in Background (Daily use):** Double-click `autoduplex.bat`. The code will run completely hidden in the background.
+* **Method 3 - Run Pre-built Executable:** Download the `.exe` file from the Release page and place it in your directory (ensure `SumatraPDF.exe` is in the same folder and PDF24 is configured correctly). Just double-click the `.exe` to run it in the background without needing Python installed.
 
 **Auto-start with Windows:**
 
 1. Press `Win + R`, type `shell:startup`, and hit Enter.
-2. Right-click the `autoduplex.bat` file, select **Create shortcut**.
+2. Right-click either the `autoduplex.bat` file or the downloaded `.exe` file, and select **Create shortcut**.
 3. Cut (Ctrl+X) the newly created shortcut and paste (Ctrl+V) it into the `Startup` folder you just opened.
 
 > Done! The tool will now run silently in the background every time you boot up your PC.
