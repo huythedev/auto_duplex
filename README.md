@@ -12,36 +12,44 @@ Instead of manually remembering odd/even pages and struggling with paper orienta
 
 ## Installation & Configuration
 
-### Step 1: Clone the Tool
+You can install this tool using either the pre-built executable (recommended for most users) or from source.
+
+### Option A: Pre-built Executable (Easy)
+
+1. Create a root directory (e.g., `C:\AutoDuplex`).
+2. Download the `.exe` file from the [Releases](#) page and place it in your directory.
+3. Download `SumatraPDF.exe` (Portable version) and place it in the **same directory** as the `.exe`.
+4. Skip to **Step 3: Configure PDF24** below.
+
+### Option B: Run from Source (Advanced/Custom)
+
+#### Step 1: Clone the Tool
 1. Create a root directory (e.g., `C:\AutoDuplex`).
 2. Clone this repo (containing `main.py`, `autoduplex.bat`) into that directory.
 3. Download `SumatraPDF.exe` (Portable version) and place it in the same directory.
 
-### Step 2: Install Python Dependencies
+#### Step 2: Install Python Dependencies
 Open Terminal/CMD and run:
 ```bash
 pip install watchdog pypdf
-
 ```
+
+#### Step 3: Configure the Code
+Open `main.py`, find this line, and change it to the exact name of your physical printer (check your Control Panel):
+```python
+PRINTER_NAME = "Canon LBP2900" 
+```
+
+---
 
 ### Step 3: Configure PDF24 (Virtual Printer)
 
 1. Install PDF24 Creator and open **PDF24 Settings**.
 2. Go to **PDF Printer** -> **Auto-Save**:
 * Check **Enable Auto-Save**.
-* Output directory: Point this to a `Spool` folder inside your tool's directory (e.g., `C:\AutoDuplex\Spool`). The Python script will auto-create this folder if it doesn't exist.
-
+* Output directory: Point this to a `Spool` folder inside your tool's directory (e.g., `C:\AutoDuplex\Spool`). The system will auto-create this folder if it doesn't exist.
 
 3. (Optional) Go to Windows Control Panel, rename the PDF24 printer to something like `Smart Auto Duplex` to easily recognize it when printing.
-
-### Step 4: Configure the Code
-
-Open `main.py`, find this line, and change it to the exact name of your physical printer (check your Control Panel):
-
-```python
-PRINTER_NAME = "Canon LBP2900" 
-
-```
 
 ## Running & Background Service
 
