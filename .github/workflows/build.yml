@@ -34,6 +34,7 @@ jobs:
     - name: Create Release and Upload Asset
       uses: softprops/action-gh-release@v2
       with:
+        tag_name: ${{ github.ref_type == 'tag' && github.ref_name || 'latest-build' }}
         files: dist/AutoDuplex.exe
         generate_release_notes: true
       env:
