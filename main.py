@@ -49,6 +49,12 @@ def process_and_print(pdf_path):
     even_indices = list(range(1, total_pages, 2))
     even_indices.reverse()
 
+    # For odd-length documents, side 2 has one fewer page.
+    # Insert a leading blank so the trailing odd sheet stays blank on the back.
+    if total_pages % 2 != 0:
+        first_page = reader.pages[0]
+        writer_even.add_blank_page(width=float(first_page.mediabox.width), height=float(first_page.mediabox.height))
+
     # Rotate even pages 180 degrees
     for i in even_indices:
         page = reader.pages[i]
